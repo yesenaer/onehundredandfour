@@ -29,3 +29,7 @@ repository = "https://github.com/yesenaer/onehundredandfour"
 
 [options]
 python_requires = ">=3.10"
+
+[tool.pytest.ini_options]
+minversion = 7.0
+pythonpath = "onehundredandfour"
