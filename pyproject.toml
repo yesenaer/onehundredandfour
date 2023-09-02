@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "onehundredandfour"
+version = "0.0.1"
+description = "Fun Card Game Backend"
+readme = "README.md"
+requires-python = ">=3.10"
+keywords = ["onehundredandfour", "game"]
+authors = [
+    {email = "meervoud.globes-0r@icloud.com"},
+    {name = "yesenaer"}
+]
+classifiers = [
+  "Programming Language :: Python"
+]
+dependencies = []
+
+[project.optional-dependencies]
+test = [
+  "pytest",
+  "pytest-cov[all]"
+]
+
+[project.urls]
+repository = "https://github.com/yesenaer/onehundredandfour"
+
+[options]
+python_requires = ">=3.10"
