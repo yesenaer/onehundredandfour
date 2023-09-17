@@ -12,6 +12,9 @@ Main language used in this repository is python.
 - (if needed) `pip install build`
 - run `py -m build`
 
+## play
+Rules of the game can be found at [`docs/rules.md`](docs/rules.md)
+
 ## contribute
 - create a branch 
 - add your suggested feature or fix
