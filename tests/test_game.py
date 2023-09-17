@@ -1,6 +1,6 @@
-from onehundredandfour.game.game import Game, GameState
-from onehundredandfour.game.deck import Deck
-from onehundredandfour.game.player import Player
+from game.game import Game, GameState
+from game.deck import Deck
+from game.player import Player
 
 
 def test_game_init():
