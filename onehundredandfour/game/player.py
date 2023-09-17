@@ -1,5 +1,5 @@
 from typing import List 
-from onehundredandfour.game.deck import Card
+from game.deck import Card
 
 class Player:
     """Represents the details of a player participating in a game."""

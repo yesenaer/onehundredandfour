@@ -1,4 +1,4 @@
-from onehundredandfour.game.deck import Deck, Card
+from game.deck import Deck, Card
 
 def test_card_init():
    card = Card(value=5, score=1)

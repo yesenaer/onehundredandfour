@@ -1,4 +1,4 @@
-from onehundredandfour.game.player import Player
+from game.player import Player
 
 def test_player_init():
    name = "Mario"

@@ -1,5 +1,5 @@
-from onehundredandfour.game.deck import Deck, Card
-from onehundredandfour.game.player import Player
+from game.deck import Deck, Card
+from game.player import Player
 from typing import List
 from enum import Enum
 
