@@ -16,7 +16,7 @@ authors = [
 classifiers = [
   "Programming Language :: Python"
 ]
-dependencies = []
+dependencies = ["bottle", "webtest"]
 
 [project.optional-dependencies]
 test = [
