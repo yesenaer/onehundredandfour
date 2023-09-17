@@ -39,7 +39,9 @@ class Game:
             print(f"Maximum amount of players reached, unable to add player.")
             return False
         
+        print(f"adding player {player.name} to game")
         self.players.append(player)
+        print(f"current amount of players: {len(self.players)}")
         return True
     
     def start_game(self):
@@ -52,6 +54,10 @@ class Game:
         self.state = GameState.FINISHED
         # mention if not all rounds are done?
         # calculate and return loser / winner
+
+    def __repr__(self) -> str:
+        names = [player.name for player in self.players]
+        return f"A nice game of onehundredandfour with players: {names}. Game is currently {self.state}."
 
 
 
