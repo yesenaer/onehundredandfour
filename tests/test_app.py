@@ -22,7 +22,7 @@ def prepared_game(webapp):
 def test_hello(webapp):
    result = webapp.get('/hello')
    assert result.status_code == 200
-   assert result.text == "hello world!"
+   assert result.text == "Hello World!"
 
 
 def test_create_game(webapp):

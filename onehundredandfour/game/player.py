@@ -6,7 +6,9 @@ class Player:
     name: str
     hand: List[Card]
     score: int = 0
+    penalty_cards = List[Card]
 
     def __init__(self, name: str) -> None:
         self.name = name.strip()
         self.hand = []
+        self.penalty_cards = []
