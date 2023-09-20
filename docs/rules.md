@@ -80,3 +80,7 @@ The player with the least amount of penalty points is the winner of the game!
     - Least amount of penalty points wins!
 
 ![Determine the winner](/docs/drawings/determine_winner.svg)
+
+### Full Game Flow
+
+![Game flow](/docs/drawings/game_flow.svg)
