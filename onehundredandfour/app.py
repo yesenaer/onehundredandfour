@@ -31,7 +31,7 @@ def create_app() -> Bottle:
         """Tries to join player to game with given id.
 
         Args:
-            id (int): Game id
+            id (int): Game id.
             name (str): Name of player joining.
 
         Returns:
