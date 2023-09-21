@@ -1,5 +1,6 @@
 from typing import List
 from dataclasses import dataclass
+from random import shuffle
 
 @dataclass
 class Card:
@@ -35,3 +36,25 @@ class Deck():
                 self.cards.append(Card(index, 2))
             else:
                 self.cards.append(Card(index, 1))
+
+    def shuffle(self):
+        """Randomizes order of the cards list belonging to the instance."""
+        shuffle(self.cards)
+
+    def shake(self) -> str:
+        """Every dad-like person. Every card game.
+        
+        Returns:
+            str: Try and you will found out!
+        """
+        water_chicken = "\n(o< QUACK! \n<_)\t\tDad joke found!\n\n"
+        return f"{water_chicken}Insert dad joke about waving cards around without randomizing order."
+    
+    def deal_one_card(self) -> Card:
+        """Removes one card from cards list and returns that card.
+
+        Returns:
+            Card: The card that was removed from the cards list.
+        """
+        return self.cards.pop()
+

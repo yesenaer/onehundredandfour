@@ -47,13 +47,45 @@ def test_add_player_player_count_failure(game):
 
 
 def test_start_success(game):
+   mario = Player(name="Mario")
+   game.add_player(mario)
    game.start()
    assert game.state == GameState.ACTIVE
+   assert len(game.row0) == 1
+   assert len(game.row1) == 1
+   assert len(game.row2) == 1
+   assert len(game.row3) == 1
+   assert len(game.players[0].hand) == 10
 
 
-def test_end_success(game):
-   game.end()
+def test_end_success_one_winner(game):
+   mario = Player(name="Mario")
+   mario.score = 21
+   game.add_player(mario)
+   luigi = Player(name="Luigi")
+   luigi.score = 12
+   game.add_player(luigi)
+   winner, score = game.end()
    assert game.state == GameState.FINISHED
+   assert winner == ['Luigi']
+   assert score == 12
+
+
+def test_end_success_multiple_winners(game):
+   mario = Player(name="Mario")
+   mario.score = 21
+   game.add_player(mario)
+   luigi = Player(name="Luigi")
+   luigi.score = 17
+   game.add_player(luigi)
+   bowser = Player(name="Bowser")
+   bowser.score = 17
+   game.add_player(bowser)
+   winners, score = game.end()
+   assert game.state == GameState.FINISHED
+   assert winners == ['Luigi', 'Bowser']
+   assert score == 17
+
 
 @mark.parametrize("input", [-100, -2, -1, 4, 5, 100])
 def test_retrieve_target_row_failures(game, input):
@@ -129,23 +161,23 @@ def test_replace_row_success(game):
 def test_repr_success(game):
    opening_message = "A nice game of onehundredandfour with players:"
    empty_game = f"{opening_message} []. Game is currently {GameState.PENDING}."
-   assert repr(game) == empty_game
+   assert str(game) == empty_game
 
    player1 = Player(name="Mario")
    player2 = Player(name="Luigi")
    player_names = f"'Mario', 'Luigi'"
    player1_in = f"{opening_message} ['{player1.name}']. Game is currently {GameState.PENDING}."
    game.add_player(player1)
-   assert repr(game) == player1_in
+   assert str(game) == player1_in
 
    player2_in = f"{opening_message} [{player_names}]. Game is currently {GameState.PENDING}."
    game.add_player(player2)
-   assert repr(game) == player2_in
+   assert str(game) == player2_in
 
    active = f"{opening_message} [{player_names}]. Game is currently {GameState.ACTIVE}."
    game.start()
-   assert repr(game) == active
+   assert str(game) == active
 
    ended = f"{opening_message} [{player_names}]. Game is currently {GameState.FINISHED}."
    game.end()
-   assert repr(game) == ended
+   assert str(game) == ended

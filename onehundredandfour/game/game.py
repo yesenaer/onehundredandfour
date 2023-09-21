@@ -1,6 +1,6 @@
 from game.deck import Deck, Card
 from game.player import Player
-from typing import List
+from typing import List, Union
 from enum import Enum
 
 
@@ -58,17 +58,43 @@ class Game:
         return True
     
     def start(self):
-        """Starts the game. Causing the GameState to change to Active."""
+        """Starts the game. Sets GameState to change to Active. Shuffles deck. 
+        Deals cards to players and rows."""
         self.state = GameState.ACTIVE
-        # shuffle cards 
-        # give each player a hand of cards 
-        # populate rows 
+        self.deck.shake()
+        self.deck.shuffle()
 
-    def end(self):
-        """Ends the game. Causing the GameState to change to Finished."""
+        # give each player a hand of cards, simulate real-life dealing
+        for _ in range(10):
+            [player.hand.append(self.deck.deal_one_card()) for player in self.players]
+                
+        # populate rows with starting card
+        self.row0.append(self.deck.deal_one_card())
+        self.row1.append(self.deck.deal_one_card())
+        self.row2.append(self.deck.deal_one_card())
+        self.row3.append(self.deck.deal_one_card())
+
+
+    def end(self) -> Union[list, int]:
+        """Ends the game. Causing the GameState to change to Finished. Calculates winner(s).
+        
+        Returns:
+            list: List of one or multiple player names that won the game.
+            int: The winning score.
+        """
         self.state = GameState.FINISHED
         # mention if not all rounds are done?
-        # calculate and return loser / winner
+
+        # calculate and return winner
+        self.players.sort(key=lambda x: x.score)
+        winning_score = self.players[0].score
+        winners = []
+        for player in self.players:
+            if player.score == winning_score:
+                winners.append(player.name)
+            else:
+                break
+        return winners, winning_score
 
     def retrieve_target_row(self, row_number: int) -> list:
         """Retrieves target row based on received integer.
@@ -130,7 +156,7 @@ class Game:
         target_row.append(card)
         return penalty_row
 
-    def __repr__(self) -> str:
+    def __str__(self) -> str:
         """Generates a string with details of this game instance."""
         names = [player.name for player in self.players]
         return f"A nice game of onehundredandfour with players: {names}. Game is currently {self.state}."
