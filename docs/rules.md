@@ -50,3 +50,43 @@ When all cards are processed, the round completes and a new round can be started
 Once all 10 rounds have been completed, the scores can be determined.
 All received penalty points are added up per player. 
 The player with the least amount of penalty points is the winner of the game!
+
+
+## Drawn Explanation
+
+### Pending State
+- #### Game Creation
+
+![Dealing the cards](/docs/drawings/game_creation.svg)
+
+
+### Active State
+- #### Dealing the cards from deck:
+    - 1 per row
+    - 10 per player
+
+![Dealing the cards](/docs/drawings/deal_cards.svg)
+
+![Players pick cards](/docs/drawings/pick_cards.svg)
+
+![All cards picked](/docs/drawings/all_cards_picked.svg)
+
+![Lowest card goes first](/docs/drawings/lowest_first.svg)
+
+
+- #### Play a round 
+
+    - ##### Card fits 
+    - ##### Card is too low
+    - ##### Row is full
+
+
+### Finished State
+- #### Determine the winner
+    - Least amount of penalty points wins!
+
+![Determine the winner](/docs/drawings/determine_winner.svg)
+
+### Full Game Flow
+
+![Game flow](/docs/drawings/game_flow.svg)
