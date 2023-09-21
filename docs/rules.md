@@ -67,18 +67,20 @@ The player with the least amount of penalty points is the winner of the game!
 
 ![Dealing the cards](/docs/drawings/deal_cards.svg)
 
+
+- #### Play a round 
+- ##### Each round all players pick a card
 ![Players pick cards](/docs/drawings/pick_cards.svg)
 
 ![All cards picked](/docs/drawings/all_cards_picked.svg)
 
+- ##### When all cards are picked, players open their cards. The cards can now be applied to rows. Lowest card gets to go first.
+
 ![Lowest card goes first](/docs/drawings/lowest_first.svg)
 
-
-- #### Play a round 
-
-    - ##### Card fits 
-    - ##### Card is too low
-    - ##### Row is full
+- ##### Apply to row when card fits 
+- ##### Card is too low
+- ##### Row is full
 
 
 ### Finished State
