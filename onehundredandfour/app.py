@@ -83,7 +83,7 @@ def create_app() -> Bottle:
             str: String representation of game.
         """
         game: Game = ACTIVE_GAMES[id]
-        return repr(game)
+        return str(game)
     
     @app.route('/hello')
     def hello() -> str:
