@@ -57,7 +57,7 @@ The player with the least amount of penalty points is the winner of the game!
 ### Pending State
 - #### Game Creation
 
-![Dealing the cards](/docs/drawings/game_creation.svg)
+![Game creation](/docs/drawings/game_creation.svg)
 
 
 ### Active State
