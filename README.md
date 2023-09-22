@@ -8,6 +8,12 @@ Main language used in this repository is python.
 - (suggested) create a virtual environment
 - install the requirements
 
+## test
+- run `pytest .` from root of repo.
+
+## run
+- run `py .\onehundredandfour\app.py` from root of repo.
+
 ## build
 - (if needed) `pip install build`
 - run `py -m build`
