@@ -22,6 +22,10 @@ Main language used in this repository is python.
 Rules of the game can be found at [`docs/rules.md`](docs/rules.md)
 
 ## contribute
+### suggestions
+- report bugs or suggest features using the issues section of github
+
+### code
 - create a branch 
 - add your suggested feature or fix
 - create a pull request
