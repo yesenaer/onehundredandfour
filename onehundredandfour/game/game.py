@@ -57,7 +57,7 @@ class Game:
         print(f"current amount of players: {len(self.players)}")
         return True
     
-    def start(self):
+    def start(self) -> None:
         """Starts the game. Sets GameState to change to Active. Shuffles deck. 
         Deals cards to players and rows."""
         self.state = GameState.ACTIVE
@@ -115,7 +115,7 @@ class Game:
         row_index = [self.row0, self.row1, self.row2, self.row3]
         return row_index[row_number]
     
-    def add_card_to_row(self, row_number: int, card: Card):
+    def add_card_to_row(self, row_number: int, card: Card) -> None:
         """Tries to add given card to row. Will fail in case of wrong values or full row.
 
         Args:
@@ -157,6 +157,10 @@ class Game:
         return penalty_row
 
     def __str__(self) -> str:
-        """Generates a string with details of this game instance."""
+        """Generates a string with details of this game instance.
+
+        Returns:
+            str: details of the game.
+        """
         names = [player.name for player in self.players]
         return f"A nice game of onehundredandfour with players: {names}. Game is currently {self.state}."
