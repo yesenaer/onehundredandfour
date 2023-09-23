@@ -22,7 +22,7 @@ class Deck():
     """Contains all possible cards that belong to a game."""
     cards: List
 
-    def __init__(self):
+    def __init__(self) -> None:
         self.cards = []
 
         for index in range(1, 105):
@@ -37,7 +37,7 @@ class Deck():
             else:
                 self.cards.append(Card(index, 1))
 
-    def shuffle(self):
+    def shuffle(self) -> None:
         """Randomizes order of the cards list belonging to the instance."""
         shuffle(self.cards)
 
