@@ -19,13 +19,13 @@ def prepared_game(webapp):
    return id, webapp
 
 
-def test_hello(webapp):
+def test_app_hello(webapp):
    result = webapp.get('/hello')
    assert result.status_code == 200
    assert result.text == "Hello World!"
 
 
-def test_create_game(webapp):
+def test_app_create_game(webapp):
    assert len(ACTIVE_GAMES) == 0
    result = webapp.get('/game/create')
    assert result.status_code == 200
@@ -33,13 +33,13 @@ def test_create_game(webapp):
    assert len(ACTIVE_GAMES) == 1
 
 
-def test_join_game(webapp):
+def test_app_join_game(webapp):
    result = webapp.get('/game/0/join/mario')
    assert result.status_code == 200
    assert result.text == "success"
    
 
-def test_start_game(prepared_game):
+def test_app_start_game(prepared_game):
    id, game = prepared_game
    status1 = game.get(f'/game/{id}/status')
    expected1 = "A nice game of onehundredandfour with players: ['mario', 'luigi']. Game is currently GameState.PENDING."
@@ -55,7 +55,7 @@ def test_start_game(prepared_game):
    assert status2.text == expected2
 
 
-def test_end_game(prepared_game):
+def test_app_end_game(prepared_game):
    id, game = prepared_game
    status1 = game.get(f'/game/{id}/status')
    expected1 = "A nice game of onehundredandfour with players: ['mario', 'luigi']. Game is currently GameState.PENDING."

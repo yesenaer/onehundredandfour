@@ -52,7 +52,7 @@ class Game:
             print(f"Maximum amount of players reached, unable to add player.")
             return False
         
-        print(f"adding player {player.name} to game")
+        print(f"adding player {str(player)} to game")
         self.players.append(player)
         print(f"current amount of players: {len(self.players)}")
         return True
@@ -91,7 +91,7 @@ class Game:
         winners = []
         for player in self.players:
             if player.score == winning_score:
-                winners.append(player.name)
+                winners.append(str(player))
             else:
                 break
         return winners, winning_score
@@ -162,5 +162,5 @@ class Game:
         Returns:
             str: details of the game.
         """
-        names = [player.name for player in self.players]
+        names = [str(player) for player in self.players]
         return f"A nice game of onehundredandfour with players: {names}. Game is currently {self.state}."
