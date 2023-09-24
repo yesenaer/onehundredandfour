@@ -13,7 +13,7 @@ def test_card_init():
    assert card.score == 1
 
 
-def test_deck_count(deck):
+def test_deck_init(deck):
    assert isinstance(deck.cards, list)
    assert len(deck.cards) == 104
 

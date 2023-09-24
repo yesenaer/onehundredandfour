@@ -42,6 +42,7 @@ def create_app() -> Bottle:
         if game.add_player(player):
             return "success"
         else: 
+            del player
             return "mama mia!"
         
     @app.route('/game/<id:int>/start')

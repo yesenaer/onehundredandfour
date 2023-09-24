@@ -9,7 +9,7 @@ def game():
    return Game()
 
 
-def test_game_init_success(game):
+def test_game_init(game):
    assert game.state == GameState.PENDING
    assert isinstance(game.deck, Deck)
    assert isinstance(game.players, list)
@@ -20,7 +20,7 @@ def test_game_init_success(game):
    assert len(game.players) == 0
 
 
-def test_add_player_success(game):
+def test_game_add_player(game):
    mario = Player(name="Mario")
    result = game.add_player(mario)
    assert result
@@ -28,7 +28,7 @@ def test_add_player_success(game):
    assert mario in game.players
 
 
-def test_add_player_gamestate_failure(game):
+def test_game_add_player_gamestate_failure(game):
    game.start()
    mario = Player(name="Mario")
    result = game.add_player(mario)
@@ -36,7 +36,7 @@ def test_add_player_gamestate_failure(game):
    assert mario not in game.players
 
 
-def test_add_player_player_count_failure(game):
+def test_game_add_player_player_count_failure(game):
    mario = Player(name="Mario")
    luigi = Player(name="Luigi")
    [game.add_player(mario) for i in range(10)]  
@@ -46,7 +46,7 @@ def test_add_player_player_count_failure(game):
    assert luigi not in game.players
 
 
-def test_start_success(game):
+def test_game_start(game):
    mario = Player(name="Mario")
    game.add_player(mario)
    game.start()
@@ -58,7 +58,7 @@ def test_start_success(game):
    assert len(game.players[0].hand) == 10
 
 
-def test_end_success_one_winner(game):
+def test_game_end_one_winner(game):
    mario = Player(name="Mario")
    mario.score = 21
    game.add_player(mario)
@@ -71,7 +71,7 @@ def test_end_success_one_winner(game):
    assert score == 12
 
 
-def test_end_success_multiple_winners(game):
+def test_game_end_multiple_winners(game):
    mario = Player(name="Mario")
    mario.score = 21
    game.add_player(mario)
@@ -88,19 +88,19 @@ def test_end_success_multiple_winners(game):
 
 
 @mark.parametrize("input", [-100, -2, -1, 4, 5, 100])
-def test_retrieve_target_row_failures(game, input):
+def test_game_retrieve_target_row_failures(game, input):
    with raises(ValueError):
       game.retrieve_target_row(row_number=input)
 
 
 @mark.parametrize("input", [0, 1, 2, 3])
-def test_retrieve_target_row_success(game, input):
+def test_game_retrieve_target_row(game, input):
    rows = [game.row0, game.row1, game.row2, game.row3]
    actual = game.retrieve_target_row(row_number=input)
    assert actual == rows[input]
 
 
-def test_add_card_to_row_is_full_failure(game):
+def test_game_add_card_to_row_is_full_failure(game):
    # adding up to a full row
    for i in range(5):
       game.add_card_to_row(row_number=0, card=Card(i, 1))
@@ -112,7 +112,7 @@ def test_add_card_to_row_is_full_failure(game):
    assert len(game.row0) == 5
 
 
-def test_add_card_to_row_lower_value_failure(game):
+def test_game_add_card_to_row_lower_value_failure(game):
    higher_card = Card(104, 1)
    lower_card = Card(4, 1)
    game.add_card_to_row(row_number=0, card=higher_card)
@@ -125,14 +125,14 @@ def test_add_card_to_row_lower_value_failure(game):
    assert game.row0[-1] == higher_card
 
 
-def test_add_card_to_row_empty_success(game):
+def test_game_add_card_to_row_empty(game):
    expected = Card(1,2)
    assert len(game.row1) == 0
    game.add_card_to_row(row_number=1, card=expected)
    assert len(game.row1) == 1
 
 
-def test_add_card_to_row_non_empty_success(game):
+def test_game_add_card_to_row_non_empty(game):
    first_card = Card(55, 7)
    expected = Card(80, 3)
    game.add_card_to_row(row_number=1, card=first_card)
@@ -143,7 +143,7 @@ def test_add_card_to_row_non_empty_success(game):
    assert game.row1[-1] == expected
 
 
-def test_replace_row_success(game):
+def test_game_replace_row(game):
    first_card = Card(55, 7)
    second_card = Card(100, 3)
    game.add_card_to_row(row_number=1, card=first_card)
@@ -158,7 +158,7 @@ def test_replace_row_success(game):
    assert game.row1[-1] == replacing_card   
 
 
-def test_repr_success(game):
+def test_game_str(game):
    opening_message = "A nice game of onehundredandfour with players:"
    empty_game = f"{opening_message} []. Game is currently {GameState.PENDING}."
    assert str(game) == empty_game
