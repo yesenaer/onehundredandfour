@@ -13,6 +13,7 @@ Main language used in this repository is python.
 
 ## run
 - run `py .\onehundredandfour\app.py` from root of repo.
+- app api's can be accessed at localhost (port 8080). 
 
 ## build
 - (if needed) `pip install build`
