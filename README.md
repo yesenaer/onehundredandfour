@@ -18,14 +18,14 @@ Main language used in this repository is python.
     - or include optional dependencies `pip install .[test]` 
 
 ## test
-- run `pytest .` from root of repo.
+- run `pytest .` from root of repo
 
 ## run
-- run `py .\onehundredandfour\app.py` from root of repo.
-- api's can be accessed at `host` localhost `port` 8080.
+- run `py .\onehundredandfour\app.py` from root of repo
+- api's can be accessed at `host` localhost `port` 8080
 
 ### APIs
-`/hello` - Here to greet you.
+`/hello` - Here to greet you
 
 `/game/create` - will create a game and return the id of the game
 
