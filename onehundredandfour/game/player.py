@@ -18,7 +18,7 @@ class Player:
         self.penalty_cards = []
         self.card_to_play = None
 
-    def set_card_to_play(self, card: Card):
+    def set_card_to_play(self, card: Card) -> None:
         """Activates a card that is going to be played in this round.
 
         Args:
