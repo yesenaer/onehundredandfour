@@ -45,7 +45,6 @@ def test_app_start_game(prepared_game):
    expected1 = "A nice game of onehundredandfour with players: ['mario', 'luigi']. Game is currently GameState.PENDING."
    assert status1.status_code == 200
    assert status1.text == expected1
-   game.get(f'/game/{id}/start')
    result = game.get(f'/game/{id}/start')
    assert result.status_code == 200
    assert result.text == "success"
