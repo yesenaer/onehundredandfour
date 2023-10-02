@@ -32,35 +32,32 @@ def test_player_set_card_to_play_empty(mario):
    assert expected not in mario.hand
 
 
-def test_player_set_card_to_play_occupied():
-   player = Player("Mario")
+def test_player_set_card_to_play_occupied(mario):
    deck = Deck()
    for i in range(10):
-      player.hand.append(deck.cards.pop())
+      mario.hand.append(deck.cards.pop())
 
    existing = Card(103, 1)
-   player.set_card_to_play(existing)
-   assert player.card_to_play == existing
-   assert existing not in player.hand
+   mario.set_card_to_play(existing)
+   assert mario.card_to_play == existing
+   assert existing not in mario.hand
 
    expected = Card(104, 1)
-   assert expected in player.hand
-   player.set_card_to_play(expected)
-   assert player.card_to_play == expected
-   assert expected not in player.hand
-   assert existing in player.hand
+   assert expected in mario.hand
+   mario.set_card_to_play(expected)
+   assert mario.card_to_play == expected
+   assert expected not in mario.hand
+   assert existing in mario.hand
 
 
-def test_player_set_card_to_play_failure():
-   player = Player("Mario")
+def test_player_set_card_to_play_failure(mario):
    deck = Deck()
    for i in range(10):
-      player.hand.append(deck.cards.pop())
+      mario.hand.append(deck.cards.pop())
    expected = Card(1, 1)  # card is not in hand
    with raises(Exception):
-      player.set_card_to_play(expected)
+      mario.set_card_to_play(expected)
 
 
-def test_player_str():
-   player = Player("Mario")
-   assert str(player) == "Mario"
+def test_player_str(mario):
+   assert str(mario) == "Mario"

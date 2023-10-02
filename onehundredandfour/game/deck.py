@@ -18,7 +18,7 @@ class Card:
         self.score = score
 
 
-class Deck(): 
+class Deck: 
     """Contains all possible cards that belong to a game."""
     cards: List
 
@@ -57,4 +57,3 @@ class Deck():
             Card: The card that was removed from the cards list.
         """
         return self.cards.pop()
-
