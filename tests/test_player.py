@@ -59,5 +59,27 @@ def test_player_set_card_to_play_failure(mario):
       mario.set_card_to_play(expected)
 
 
+def test_player_add_penalty_cards(mario):
+   card_1 = Card(1, 1)
+   card_55 = Card(55, 7)
+   cards = [card_1, card_55]
+   
+   assert mario.score == 0
+   assert len(mario.penalty_cards) == 0
+   mario.add_penalty_cards(cards=cards)
+   assert mario.score == 8
+   assert mario.penalty_cards == cards
+   assert card_1 in mario.penalty_cards and card_55 in mario.penalty_cards
+
+
+def test_player_add_penalty_cards_empty(mario):
+   cards = []
+   assert mario.score == 0
+   assert len(mario.penalty_cards) == 0
+   mario.add_penalty_cards(cards=cards)
+   assert mario.score == 0
+   assert len(mario.penalty_cards) == 0
+
+
 def test_player_str(mario):
    assert str(mario) == "Mario"
