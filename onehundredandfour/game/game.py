@@ -155,6 +155,33 @@ class Game:
         target_row.clear()
         target_row.append(card)
         return penalty_row
+    
+    def process_round(self) -> None:
+        """Processes a round of the game based on players cards.
+
+        Raises:
+            Exception: when not all players have set their card to play.
+        """
+        player_with_lowest_card = None
+        # requires another loop
+        for player in self.players:
+            if not player.card_to_play:
+                raise Exception()
+
+            if not player_with_lowest_card:
+                player_with_lowest_card = player
+            elif player_with_lowest_card.card_to_play.value > player.card_to_play.value:
+                player_with_lowest_card = player
+
+        # player with lowest card determined.
+        # find row to place card in. add card to row if ok, else replace row
+        try:
+            row_to_play = 1
+            self.add_card_to_row(row_to_play, player_with_lowest_card.card_to_play)
+            player_with_lowest_card.card_to_play = None
+        except RowIsFullException:   
+            penalty_cards = self.replace_row(1, player_with_lowest_card.card_to_play)
+            player_with_lowest_card.add_penalty_cards(penalty_cards)
 
     def __str__(self) -> str:
         """Generates a string with details of this game instance.

@@ -36,6 +36,15 @@ class Player:
         self.hand.remove(card)
         self.card_to_play = card
 
+    def add_penalty_cards(self, cards: list[Card]) -> None:
+        """Processes the penalty cards received by player to both the penalty_cards and score variables.
+
+        Args:
+            cards (list[Card]): the penalty cards received by player.
+        """
+        for card in cards:
+            self.penalty_cards.append(card)
+            self.score += card.score
 
     def __str__(self) -> str:
         """Returns player's name as string representation of the instance.
